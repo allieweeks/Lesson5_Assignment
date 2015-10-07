@@ -51,21 +51,38 @@ function setUpPage() {
    addColumnHeaders();
    addCalendarDates();
 }//end of setUpPage function
-//This function will place the game information in the calender  
+// function to place opponents and gameLocation values in
+// second p element within each table data cell that has an id 
 function addGameInfo() {
    var paragraphs = "";
-   for (var i = 0; i < 31; i++) {
+   for (var i = 0; i < 31; i++) 
       var date = i+1;
       var tableCell = document.getElementById("08-" + date);
       paragraphs = tableCell.getElementsByTagName("p");
-      paragraphs[1].innerHTML += opponents[i];
+      paragraphs[1].innerHTML += opponents[i]; }
+   
+   if (gameLocation[i] === "away") {
+     paragraphs[1].innerHTML = "@ ";
+     paragraphs[1].innerHTML += opponents[i];
+}//end of if
+   else if (gameLocation[i] === "home") {
+             paragraphs[1].innerHTML = "vs ";
+             paragraphs[1].innerHTML += opponents[i];
+   } //end of else if
+     
+  //end of for loop
+   //end of addGameInfo function
+     
+     
+     
+     
    }//end of the for loop
-}//end of the function
+//end of the function
 // function to populate calendar 
 function setUpPage() {
    addColumnHeaders();
    addCalendarDates();
-   addGameInfo();
+   addGameInfo(); 
 }//end of setUpPage function  
   
 window.addEventListener("load", setUpPage(), false);
